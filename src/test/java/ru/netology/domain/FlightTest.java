@@ -1,5 +1,4 @@
 package ru.netology.domain;
-
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
