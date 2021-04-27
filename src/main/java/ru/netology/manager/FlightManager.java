@@ -19,14 +19,13 @@ public class FlightManager {
         repository.save(item);
     }
 
-    public Flight[] findAllByAirports(String from, String to) {
+    public Flight[] getAll() {
+        return repository.findAll();
+    }
+
+    public Flight[] searchBy(String from, String to) {
         Flight[] result = repository.findByAirports(from, to);
         Arrays.sort(result);
-        return result;
-    }
-    public Flight[] findByDuration(String from, String to, Comparator<Flight> duration) {
-        Flight[] result = repository.findByAirports(from, to);
-        Arrays.sort(result, duration);
         return result;
     }
 }

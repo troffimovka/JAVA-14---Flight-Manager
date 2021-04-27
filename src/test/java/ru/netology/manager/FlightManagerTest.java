@@ -4,11 +4,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Flight;
 import ru.netology.domain.FlightComparator;
+import ru.netology.repository.FlightRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class FlightManagerTest {
     private FlightManager manager = new FlightManager();
+    private FlightRepository repository = new FlightRepository();
     FlightComparator duration = new FlightComparator();
     private Flight first = new Flight(1, 1000, "SVO", "LAX", 780);
     private Flight second = new Flight(2, 500, "SVO", "LAX", 720);
@@ -27,12 +29,11 @@ class FlightManagerTest {
 
 
     @Test
-    void shouldSearchByAirportsAndSortByDuration() {
+    void shouldSearchAndSortByAirports() {
         String from = "SVO";
         String to = "LAX";
-        Flight[] expected = new Flight[]{fifth, second, first};
-        Flight[] actual = manager.findByDuration(from, to, duration);
+        Flight[] expected = new Flight[]{second, first};
+        Flight[] actual = manager.searchBy(from, to);
         assertArrayEquals(expected, actual);
     }
-
 }
